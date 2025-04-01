@@ -1,4 +1,4 @@
-namespace EFCoreInMemory
+namespace EF_CORE___InMemory
 {
     public partial class Form1 : Form
     {

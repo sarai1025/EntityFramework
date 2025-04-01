@@ -1,4 +1,4 @@
-namespace EFCoreInMemory
+namespace EF_CORE___InMemory
 {
     internal static class Program
     {
