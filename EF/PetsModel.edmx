@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EFDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Owners">
+          <Key>
+            <PropertyRef Name="kOwner" />
+          </Key>
+          <Property Name="kOwner" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="kPet" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pets">
+          <Key>
+            <PropertyRef Name="kPet" />
+          </Key>
+          <Property Name="kPet" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Age" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Owners__kPet__6383C8BA">
+          <End Role="Pets" Type="Self.Pets" Multiplicity="1" />
+          <End Role="Owners" Type="Self.Owners" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pets">
+              <PropertyRef Name="kPet" />
+            </Principal>
+            <Dependent Role="Owners">
+              <PropertyRef Name="kPet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EFDBModelStoreContainer">
+          <EntitySet Name="Owners" EntityType="Self.Owners" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pets" EntityType="Self.Pets" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Owners__kPet__6383C8BA" Association="Self.FK__Owners__kPet__6383C8BA">
+            <End Role="Pets" EntitySet="Pets" />
+            <End Role="Owners" EntitySet="Owners" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EFDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="EFDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Owners" EntityType="EFDBModel.Owners" />
+          <EntitySet Name="Pets" EntityType="EFDBModel.Pets" />
+          <AssociationSet Name="FK__Owners__kPet__4E88ABD4" Association="EFDBModel.FK__Owners__kPet__4E88ABD4">
+            <End Role="Pets" EntitySet="Pets" />
+            <End Role="Owners" EntitySet="Owners" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Owners">
+          <Key>
+            <PropertyRef Name="kOwner" />
+          </Key>
+          <Property Name="kOwner" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kPet" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Pets" Relationship="EFDBModel.FK__Owners__kPet__4E88ABD4" FromRole="Owners" ToRole="Pets" />
+        </EntityType>
+        <EntityType Name="Pets">
+          <Key>
+            <PropertyRef Name="kPet" />
+          </Key>
+          <Property Name="kPet" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Owners" Relationship="EFDBModel.FK__Owners__kPet__4E88ABD4" FromRole="Pets" ToRole="Owners" />
+        </EntityType>
+        <Association Name="FK__Owners__kPet__4E88ABD4">
+          <End Type="EFDBModel.Pets" Role="Pets" Multiplicity="1" />
+          <End Type="EFDBModel.Owners" Role="Owners" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pets">
+              <PropertyRef Name="kPet" />
+            </Principal>
+            <Dependent Role="Owners">
+              <PropertyRef Name="kPet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EFDBModelStoreContainer" CdmEntityContainer="EFDBEntities">
+          <EntitySetMapping Name="Owners">
+            <EntityTypeMapping TypeName="EFDBModel.Owners">
+              <MappingFragment StoreEntitySet="Owners">
+                <ScalarProperty Name="kPet" ColumnName="kPet" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="kOwner" ColumnName="kOwner" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pets">
+            <EntityTypeMapping TypeName="EFDBModel.Pets">
+              <MappingFragment StoreEntitySet="Pets">
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="kPet" ColumnName="kPet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

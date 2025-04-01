@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EFDBModelStoreContainer" CdmEntityContainer="EFDBEntities">
+    <EntitySetMapping Name="Owners">
+      <EntityTypeMapping TypeName="EFDBModel.Owners">
+        <MappingFragment StoreEntitySet="Owners">
+          <ScalarProperty Name="kPet" ColumnName="kPet" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="kOwner" ColumnName="kOwner" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pets">
+      <EntityTypeMapping TypeName="EFDBModel.Pets">
+        <MappingFragment StoreEntitySet="Pets">
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="kPet" ColumnName="kPet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
