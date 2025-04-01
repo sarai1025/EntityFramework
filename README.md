@@ -18,7 +18,7 @@ This practice is splited into three projects/folders:
 
 ## Features
 
-Implemented four basic features to interact with the data base. 
+Implemented four basic features to interact with the database. 
 
 - Read users with its pet
 - Create users with its pet
