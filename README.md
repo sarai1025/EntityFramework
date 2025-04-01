@@ -10,9 +10,9 @@ This practice is splited into three projects/folders:
 
 - [x]  **1. "EF":** Console Application in .Net Framework 4.7 with a project item ADO.NET Entity Data Model based on DataBase First approach with SQL Server.
 
-- [ ] **2."EF CORE - In Memory"**: 
+- [ ] **2."EF CORE - In Memory"**: TO-DO
 
-- [ ] **3. "EF CORE - SQL"**: 
+- [ ] **3. "EF CORE - SQL"**: TO-DO
 
 
 
